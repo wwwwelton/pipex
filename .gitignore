@@ -1,1 +1,6 @@
 test
+*.o
+*.out
+pipex
+passwd
+passwd2
