@@ -31,8 +31,11 @@ fclean:			clean
 
 re:				fclean all
 
+# run:
+# 				$(MAKE) && ./pipex "passwd" "grep avatar" "head -n 1" "tr 'a' 'z'" " passwd2"
+
 run:
-				$(MAKE) && ./pipex "passwd" "grep avatar" "head -n 1" "tr 'a' 'z'" " passwd2"
+				clear && $(MAKE) && ./pipex "passwd" "ls" "ls" "passwd2" && echo $?
 
 norm:
 				norminette $(SOURCES_DIR)
