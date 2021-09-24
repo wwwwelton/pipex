@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/23 21:51:33 by wleite           ###   ########.fr       */
+/*   Created: 2021/09/23 21:50:37 by wleite            #+#    #+#             */
+/*   Updated: 2021/09/23 21:51:09 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <unistd.h>
+void	debug(int argc, char **argv, char **envp)
+{
+	int	i;
 
-void	debug(int argc, char **argv, char **envp);
-
-#endif
+	i = 0;
+	while (i < argc)
+	{
+		printf("\n%s argv[%d]", argv[i], i);
+		i++;
+	}
+	i = 0;
+	printf("\n");
+	while (envp[i])
+	{
+		if (strncmp("PATH", envp[i], 4) == 0)
+		{
+			//printf("\n%s envp[%d]", envp[i], i);
+			printf("\nPATH found!");
+			break ;
+		}
+		i++;
+	}
+	printf("\n");
+}
