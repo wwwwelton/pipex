@@ -1,4 +1,4 @@
-SOURCES_FILES	=	pipex.c debug.c
+SOURCES_FILES	=	pipex.c debug.c main.c
 
 SOURCES_DIR		=	sources
 

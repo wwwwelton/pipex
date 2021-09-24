@@ -6,19 +6,19 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/23 21:50:36 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/24 16:54:16 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+int	pipex(int argc, char **argv, char **envp)
 {
 	int	fd[2];
 	int	pid1;
 	int	pid2;
 
-	if (argc >= 4)
+	if (argc >= 5)
 	{
 		char *args[3];
 
@@ -57,6 +57,9 @@ int	main(int argc, char **argv, char **envp)
 		waitpid(pid2, NULL, 0);
 	}
 	else
+	{
 		printf("Too few arguments!\n");
+		return (1);
+	}
 	return (0);
 }
