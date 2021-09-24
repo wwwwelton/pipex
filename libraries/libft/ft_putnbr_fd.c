@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/24 19:22:19 by wleite           ###   ########.fr       */
+/*   Created: 2021/07/29 17:12:34 by wleite            #+#    #+#             */
+/*   Updated: 2021/07/29 17:42:07 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <unistd.h>
-# include "../libraries/libft/libft.h"
-
-void	debug(int argc, char **argv, char **envp);
-int		pipex(int argc, char **argv, char **envp);
-
-#endif
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == INT_MIN)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n < 10)
+	{
+		ft_putchar_fd(n + '0', fd);
+		return ;
+	}
+	else if (n >= 10 && n <= INT_MAX)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+}

@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/24 19:22:19 by wleite           ###   ########.fr       */
+/*   Created: 2021/07/27 19:24:48 by wleite            #+#    #+#             */
+/*   Updated: 2021/08/04 05:19:01 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <unistd.h>
-# include "../libraries/libft/libft.h"
+static size_t	strnlen(const char *s, size_t n)
+{
+	size_t	i;
 
-void	debug(int argc, char **argv, char **envp);
-int		pipex(int argc, char **argv, char **envp);
+	i = 0;
+	while (s[i] && i < n)
+		i++;
+	return (i);
+}
 
-#endif
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	srclen;
+	size_t	len;
+
+	if (!dst || !src)
+		return (0);
+	srclen = ft_strlen(src);
+	if (dstsize)
+	{
+		len = strnlen(src, dstsize - 1);
+		ft_memcpy(dst, src, len);
+		dst[len] = '\0';
+	}
+	return (srclen);
+}

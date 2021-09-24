@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/24 19:22:19 by wleite           ###   ########.fr       */
+/*   Created: 2021/07/27 19:24:18 by wleite            #+#    #+#             */
+/*   Updated: 2021/08/04 04:53:12 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <unistd.h>
-# include "../libraries/libft/libft.h"
+int	ft_memcmp(const void *b1, const void *b2, size_t len)
+{
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
 
-void	debug(int argc, char **argv, char **envp);
-int		pipex(int argc, char **argv, char **envp);
-
-#endif
+	ptr1 = (unsigned char *)b1;
+	ptr2 = (unsigned char *)b2;
+	while (len--)
+	{
+		if (*ptr1++ != *ptr2++)
+			return ((*--ptr1) - (*--ptr2));
+	}
+	return (0);
+}
