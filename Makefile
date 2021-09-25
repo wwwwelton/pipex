@@ -52,6 +52,6 @@ fclean:			clean
 re:				fclean all
 
 run:
-				clear && $(MAKE) && ./pipex "passwd" "ls" "ls" "passwd2" && echo $?
+				clear && $(MAKE) && ./pipex "passwd" "grep ca" "wc -w" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
 
 .PHONY:			all clean fclean re libft bonus
