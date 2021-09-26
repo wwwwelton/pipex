@@ -1,7 +1,7 @@
 LIBFT_PATH		=	./libraries/libft
 LIBFT			=	$(LIBFT_PATH)/libft.a
 
-SOURCES_FILES	=	debug.c main.c pipex.c
+SOURCES_FILES	=	debug.c main.c pipex.c pipex_utils.c
 
 SOURCES_BONUS	=
 
@@ -52,6 +52,6 @@ fclean:			clean
 re:				fclean all
 
 run:
-				clear && $(MAKE) && ./pipex "passwd" "grep ca" "wc -w" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
+				clear && $(MAKE) && echo > passwd2 && ./pipex "passwd" "tr a z" "tr z b" "tr b c" "tr c 1" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
 
 .PHONY:			all clean fclean re libft bonus
