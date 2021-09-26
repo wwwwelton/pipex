@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 21:50:37 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/23 21:51:09 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/26 07:16:17 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	debug(int argc, char **argv, char **envp)
 {
 	int	i;
 
+	printf("\nargc[%d]", argc);
 	i = 0;
 	while (i < argc)
 	{
