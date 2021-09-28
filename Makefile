@@ -1,7 +1,7 @@
 LIBFT_PATH		=	./libraries/libft
 LIBFT			=	$(LIBFT_PATH)/libft.a
 
-SOURCES_FILES	=	debug.c main.c pipex.c pipex_utils.c
+SOURCES_FILES	=	debug.c main.c pipex.c init_pipex.c
 
 SOURCES_BONUS	=
 
@@ -52,6 +52,9 @@ fclean:			clean
 re:				fclean all
 
 run:
-				clear && $(MAKE) && echo > passwd2 && ./pipex "passwd" "tr a z" "tr z b" "tr b c" "tr c 1" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
+				clear && $(MAKE) && cat "passwd" && echo > passwd2 && ./pipex "passwd" "tr a z" "tr z b" "tr b c" "tr c 1" "tr 1 0" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
+
+runv:
+				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --track-origins=yes ./pipex "passwd" "tr a z" "tr z b" "tr b c" "tr c 1" "tr 1 0" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
 
 .PHONY:			all clean fclean re libft bonus

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils.c                                      :+:      :+:    :+:   */
+/*   init_pipex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 07:11:39 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/26 09:59:09 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/28 00:31:55 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static int	init_pipes(t_pipex *pipex)
+static int	create_pipes(t_pipex *pipex)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static int	init_pipes(t_pipex *pipex)
 	return (0);
 }
 
-static int	conn_pipes(t_pipex *pipex)
+static int	create_pipeline(t_pipex *pipex)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ int	init_pipex(int argc, char **argv, char **envp, t_pipex *pipex)
 	pipex->cmd_count = argc - 3;
 	pipex->file_in = open(argv[1], O_RDWR);
 	pipex->file_out = open(argv[argc - 1], O_RDWR);
-	init_pipes(pipex);
-	conn_pipes(pipex);
+	create_pipes(pipex);
+	create_pipeline(pipex);
 	return (0);
 }
