@@ -6,28 +6,31 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 21:50:37 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/26 07:16:17 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/27 22:37:30 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	debug(int argc, char **argv, char **envp)
+void	debug(t_pipex *pipex)
 {
 	int	i;
 
-	printf("\nargc[%d]", argc);
+	printf("\ncmd_count: %d", pipex->cmd_count);
+	printf("\npip_count: %d", pipex->pip_count);
+	printf("\nlast_pip: %p\n", pipex->pip[6]);
+	printf("argc_size: %d\n", pipex->argc);
 	i = 0;
-	while (i < argc)
+	while (i < pipex->argc)
 	{
-		printf("\n%s argv[%d]", argv[i], i);
+		printf("\n%s argv[%d]", pipex->argv[i], i);
 		i++;
 	}
 	i = 0;
 	printf("\n");
-	while (envp[i])
+	while (pipex->envp[i])
 	{
-		if (strncmp("PATH", envp[i], 4) == 0)
+		if (strncmp("PATH", pipex->envp[i], 4) == 0)
 		{
 			//printf("\n%s envp[%d]", envp[i], i);
 			printf("\nPATH found!");
