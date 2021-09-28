@@ -1,7 +1,7 @@
 LIBFT_PATH		=	./libraries/libft
 LIBFT			=	$(LIBFT_PATH)/libft.a
 
-SOURCES_FILES	=	debug.c main.c pipex.c init_pipex.c
+SOURCES_FILES	=	debug.c main.c pipex.c init_pipex.c exit_pipex.c
 
 SOURCES_BONUS	=
 
@@ -23,7 +23,7 @@ NAME_BONUS		=	pipex_bonus
 CC				=	clang
 RM				=	rm -f
 
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -g3
 
 .c.o:
 				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
