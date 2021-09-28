@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 07:11:39 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/28 00:31:55 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/28 00:47:58 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	create_pipes(t_pipex *pipex)
 {
 	int	i;
 
-	pipex->pip = (int **)malloc(sizeof(int *) * (pipex->argc - 2));
+	pipex->pip = (int **)malloc(sizeof(int *) * (pipex->argc - 1));
 	i = 0;
 	while (i < (pipex->argc - 2))
 	{
