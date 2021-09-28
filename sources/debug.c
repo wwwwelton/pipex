@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 21:50:37 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/27 22:37:30 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/28 05:11:07 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	debug(t_pipex *pipex)
 	printf("\n");
 	while (pipex->envp[i])
 	{
-		if (strncmp("PATH", pipex->envp[i], 4) == 0)
+		if (strncmp("PATH=", pipex->envp[i], 4) == 0)
 		{
-			//printf("\n%s envp[%d]", envp[i], i);
+			//printf("\n%s envp[%d]", pipex->envp[i], i);
 			printf("\nPATH found!");
 			break ;
 		}
