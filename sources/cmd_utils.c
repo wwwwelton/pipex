@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/28 23:38:43 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 01:46:51 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	**cmd_split(char *cmd, t_pipex *pipex)
 	tmp = join_path(result[0], pipex->envp);
 	ft_free_ptr((void *)&result[0]);
 	result[0] = ft_strdup(tmp);
-	mat_replace_all(result, SPACE_PATTERN_2, "' '");
+	mat_replace_all(result, SPACE_PATTERN_2, "  ");
 	ft_free_ptr((void *)&tmp);
 	ft_free_ptr((void *)&tmp_cmd);
 	return (result);
