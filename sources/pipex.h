@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/28 23:39:01 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 00:03:14 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 # define SPACE_PATTERN_1 " ____[0x25]"
 # define SPACE_PATTERN_2 "____[0x25]"
-# define UNIX_PATH "/usr/bin/"
 
 typedef struct pipex
 {
@@ -45,5 +44,6 @@ char	**cmd_split(char *cmd, t_pipex *pipex);
 void	free_splited_mat(char **mat);
 void	str_replace_all(char **str, char *old_word, char *new_word);
 void	mat_replace_all(char **cmds, char *old_word, char *new_word);
+int		execute_commands(t_pipex *pipex);
 
 #endif
