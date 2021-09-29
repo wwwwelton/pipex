@@ -6,20 +6,11 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/28 07:21:39 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/28 23:38:43 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-static void	cmd_unsanitize(char **cmds, char *old_word, char *new_word)
-{
-	int	i;
-
-	i = -1;
-	while (cmds[++i])
-		str_replace_all(&cmds[i], old_word, new_word);
-}
 
 static char	**get_path(char **envp)
 {
@@ -48,7 +39,7 @@ static char	*cmd_parse(char *cmd, char **path)
 	{
 		tmp1 = ft_strjoin(path[i], "/");
 		tmp2 = ft_strjoin(tmp1, cmd);
-		if (access(tmp2, X_OK) == 0)
+		if (access(tmp2, F_OK) == 0)
 		{
 			result = ft_strdup(tmp2);
 			ft_free_ptr((void *)&tmp1);
@@ -59,7 +50,7 @@ static char	*cmd_parse(char *cmd, char **path)
 		ft_free_ptr((void *)&tmp2);
 		i++;
 	}
-	return (ft_strjoin(UNIX_PATH, cmd));
+	return (ft_strdup(cmd));
 }
 
 static char	*join_path(char *cmd, char **envp)
@@ -81,7 +72,7 @@ char	**cmd_split(char *cmd, t_pipex *pipex)
 	char	*tmp_cmd;
 	char	**result;
 
-	if (!cmd || !*cmd || cmd_is_empty(cmd))
+	if (!cmd || !*cmd)
 	{
 		result = (char **)malloc(sizeof(char *) * 2);
 		if (!result)
@@ -96,7 +87,7 @@ char	**cmd_split(char *cmd, t_pipex *pipex)
 	tmp = join_path(result[0], pipex->envp);
 	ft_free_ptr((void *)&result[0]);
 	result[0] = ft_strdup(tmp);
-	cmd_unsanitize(result, SPACE_PATTERN_2, "' '");
+	mat_replace_all(result, SPACE_PATTERN_2, "' '");
 	ft_free_ptr((void *)&tmp);
 	ft_free_ptr((void *)&tmp_cmd);
 	return (result);

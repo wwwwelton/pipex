@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/28 06:58:48 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/28 23:38:54 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,6 @@ void	free_splited_mat(char **mat)
 	}
 }
 
-int	cmd_is_empty(char *str)
-{
-	int	i;
-
-	if (!str)
-		return (1);
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] != ' ')
-			return (0);
-	}
-	return (1);
-}
-
 void	str_replace_all(char **str, char *old_word, char *new_word)
 {
 	char	*tmp;
@@ -52,4 +37,13 @@ void	str_replace_all(char **str, char *old_word, char *new_word)
 		*str = ft_str_replace((const char *)*str, old_word, new_word);
 		ft_free_ptr((void *)&tmp);
 	}
+}
+
+void	mat_replace_all(char **cmds, char *old_word, char *new_word)
+{
+	int	i;
+
+	i = -1;
+	while (cmds[++i])
+		str_replace_all(&cmds[i], old_word, new_word);
 }
