@@ -6,11 +6,26 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 01:46:51 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 03:41:05 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static int	cmd_is_empty(char *str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] != ' ')
+			return (0);
+	}
+	return (1);
+}
 
 static char	**get_path(char **envp)
 {
@@ -72,8 +87,10 @@ char	**cmd_split(char *cmd, t_pipex *pipex)
 	char	*tmp_cmd;
 	char	**result;
 
-	if (!cmd || !*cmd)
+	if (!cmd || !*cmd || cmd_is_empty(cmd))
 	{
+		if (cmd_is_empty(cmd))
+			command_not_found(cmd, NULL, pipex);
 		result = (char **)malloc(sizeof(char *) * 2);
 		if (!result)
 			return (NULL);
