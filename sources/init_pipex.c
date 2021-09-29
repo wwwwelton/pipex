@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 07:11:39 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 00:33:06 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 00:40:34 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	open_files(t_pipex *pipex)
 	if (pipex->file_in < 0)
 		exit_perror("ERROR (input file)", 1);
 	pipex->file_out = open(pipex->argv[pipex->argc - 1],
-		O_CREAT | O_WRONLY | O_TRUNC, 0777);
+			O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (pipex->file_out < 0)
 		exit_perror("ERROR (output file)", 1);
 	return (0);

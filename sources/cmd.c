@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/28 23:55:47 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 00:39:06 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	execute_command(int *fd, char *cmd, char **cmd_args, char **envp)
 {
-	int pid;
+	int	pid;
 
 	pid = fork();
 	if (pid == 0)
