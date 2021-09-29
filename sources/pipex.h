@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 00:03:14 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 00:15:08 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	free_splited_mat(char **mat);
 void	str_replace_all(char **str, char *old_word, char *new_word);
 void	mat_replace_all(char **cmds, char *old_word, char *new_word);
 int		execute_commands(t_pipex *pipex);
+void	exit_perror(char *error, int status_code);
 
 #endif
