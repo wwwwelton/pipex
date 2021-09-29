@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 00:15:08 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 02:25:17 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,21 @@ typedef struct pipex
 	int		pip_count;
 	int		argc;
 	int		**pip;
+	char	error_str[128];
 	char	**argv;
 	char	**envp;
 }	t_pipex;
 
-void	debug(t_pipex *pipex);
-int		pipex(int argc, char **argv, char **envp);
-int		init_pipex(int argc, char **argv, char **envp, t_pipex *pipex);
-int		exit_pipex(t_pipex *pipex);
 char	**cmd_split(char *cmd, t_pipex *pipex);
-void	free_splited_mat(char **mat);
-void	str_replace_all(char **str, char *old_word, char *new_word);
-void	mat_replace_all(char **cmds, char *old_word, char *new_word);
 int		execute_commands(t_pipex *pipex);
-void	exit_perror(char *error, int status_code);
+int		exit_pipex(t_pipex *pipex);
+int		init_pipex(int argc, char **argv, char **envp, t_pipex *pipex);
+int		pipex(int argc, char **argv, char **envp);
+void	debug(t_pipex *pipex);
+void	execute_perror(char **cmd, char *error, int code, t_pipex *pipex);
+void	exit_perror(char *error, int code);
+void	free_splited_mat(char **mat);
+void	mat_replace_all(char **cmds, char *old_word, char *new_word);
+void	str_replace_all(char **str, char *old_word, char *new_word);
 
 #endif
