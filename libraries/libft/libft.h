@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 20:57:08 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 22:03:01 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -520,7 +520,7 @@ void	ft_free_ptr(void **ptr);
  * old_word in the string str and replaces with the string new_word.
  * The memory address of the string str passed as a parameter will be freed.
  *
- * @param str This is the C string to be scanned.
+ * @param str This is the C string allocated with malloc to be scanned.
  * @param old_word This is the string to be located inside str.
  * @param new_word This is the string to be replaced inside str.
  * @return Returns a new string with old_word replaced by new_word

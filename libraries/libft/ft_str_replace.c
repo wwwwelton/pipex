@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 17:03:55 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 20:51:01 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/30 00:19:05 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ char	*ft_str_replace(char *str,	const char *old_word, const char *new_word)
 	char	*new_str;
 
 	if (!str || !old_word || !new_word)
+	{
+		ft_free_ptr((void *)&str);
 		return (NULL);
+	}
 	ptr = ft_strnstr(str, old_word, ft_strlen(str));
 	if (!ptr)
-		return (ft_strdup(str));
+		return (str);
 	total_size = ft_strlen(str) - ft_strlen(old_word) + ft_strlen(new_word) + 1;
 	new_str = (char *)malloc(sizeof(char) * total_size);
 	if (!new_str)
