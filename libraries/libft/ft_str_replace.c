@@ -6,19 +6,18 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 17:03:55 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/28 18:12:15 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 20:51:01 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_str_replace(const char *str,
-	const char *old_word, const char *new_word)
+char	*ft_str_replace(char *str,	const char *old_word, const char *new_word)
 {
-	char	*new_str;
-	char	*ptr;
-	int		total_size;
 	int		i;
+	int		total_size;
+	char	*ptr;
+	char	*new_str;
 
 	if (!str || !old_word || !new_word)
 		return (NULL);
@@ -33,5 +32,6 @@ char	*ft_str_replace(const char *str,
 	ft_strlcat(new_str, new_word, total_size);
 	i = (ptr - str) + ft_strlen(old_word);
 	ft_strlcat(new_str, &str[i], total_size);
+	ft_free_ptr((void *)&str);
 	return (new_str);
 }

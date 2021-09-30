@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/17 16:28:18 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 20:57:08 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -518,6 +518,7 @@ void	ft_free_ptr(void **ptr);
 /**
  * @brief Searches for the first occurrence of the string
  * old_word in the string str and replaces with the string new_word.
+ * The memory address of the string str passed as a parameter will be freed.
  *
  * @param str This is the C string to be scanned.
  * @param old_word This is the string to be located inside str.
@@ -526,8 +527,7 @@ void	ft_free_ptr(void **ptr);
  * or a duplicate of the string pointed to by str in case old_word
  * not found. If an error occurs, a null pointer is returned.
  */
-char	*ft_str_replace(const char *str,
-			const char *old_word, const char *new_word);
+char	*ft_str_replace(char *str,	const char *old_word, const char *new_word);
 
 /**
  * @brief Converts lowercase letters of the string to uppercase.
