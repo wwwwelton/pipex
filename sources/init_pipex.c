@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 07:11:39 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/01 01:02:54 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/29 02:30:35 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ static int	open_files(t_pipex *pipex)
 
 int	init_pipex(int argc, char **argv, char **envp, t_pipex *pipex)
 {
-	pipex->here_doc = 0;
-	pipex->limiter = NULL;
 	pipex->argc = argc;
 	pipex->argv = argv;
 	pipex->envp = envp;
