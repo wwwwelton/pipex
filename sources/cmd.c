@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 04:02:14 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/01 22:57:12 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	execute_commands(t_pipex *pipex)
 	char	**cmd;
 
 	i = 0;
-	while (i < (pipex->argc - 3))
+	while (i < pipex->cmd_count)
 	{
-		cmd = cmd_split(pipex->argv[i + 2], pipex);
+		cmd = cmd_split(pipex->argv[i + 2 + pipex->here_doc], pipex);
 		if (access(cmd[0], F_OK) == 0)
 			execute_command(pipex->pip[i], cmd, pipex);
 		else
