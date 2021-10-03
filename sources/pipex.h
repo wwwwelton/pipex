@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 03:40:52 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/03 08:59:48 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct pipex
 	int		file_in;
 	int		file_out;
 	int		cmd_count;
+	int		offset;
 	int		pip_count;
 	int		argc;
 	int		**pip;
