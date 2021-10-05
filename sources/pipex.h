@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 16:17:17 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/05 18:26:05 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct pipex
 	int		file_out;
 	int		here_doc;
 	int		offset;
+	int		state_lock;
 	int		pipe_count;
 	int		**pipe;
 	char	error_str[128];

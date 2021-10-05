@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 07:11:39 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 15:49:22 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/05 18:26:20 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	init_pipex(int argc, char **argv, char **envp, t_pipex *pipex)
 	pipex->envp = envp;
 	pipex->cmd_count = argc - 3;
 	pipex->offset = 2;
+	pipex->state_lock = 0;
 	create_pipes(pipex);
 	open_files(pipex);
 	create_pipeline(pipex);
