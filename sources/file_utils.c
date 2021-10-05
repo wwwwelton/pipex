@@ -6,11 +6,18 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:28:13 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 18:02:01 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/05 19:35:26 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	close_std_fd(void)
+{
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
+}
 
 int	open_files(t_pipex *pipex)
 {
