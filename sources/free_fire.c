@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   free_fire.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/03 15:58:12 by wleite           ###   ########.fr       */
+/*   Created: 2021/10/05 14:23:10 by wleite            #+#    #+#             */
+/*   Updated: 2021/10/05 16:10:59 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	pipex(int argc, char **argv, char **envp)
+int	free_pipes(t_pipex *pipex)
 {
-	t_pipex	pipex;
+	int	i;
 
-	if (argc >= 6 && is_here_doc(argv[1]))
-	{
-		init_here_doc(argc, argv, envp, &pipex);
-		execute_commands(&pipex);
-		exit_pipex(&pipex);
-	}
-	else if (argc >= 5)
-	{
-		init_pipex(argc, argv, envp, &pipex);
-		execute_commands(&pipex);
-		exit_pipex(&pipex);
-	}
-	else
-	{
-		ft_putstr_fd("Error\nToo few arguments!\n", 2);
-		exit(1);
-	}
+	if (!pipex->pipe)
+		return (1);
+	i = -1;
+	while (pipex->pipe[++i])
+		ft_free_ptr((void *)&pipex->pipe[i]);
+	ft_free_ptr((void *)&pipex->pipe);
 	return (0);
+}
+
+void	free_splited_mat(char **mat)
+{
+	int	i;
+
+	i = -1;
+	if (mat)
+	{
+		while (mat[++i])
+			ft_free_ptr((void *)&mat[i]);
+		ft_free_ptr((void *)&mat);
+	}
 }

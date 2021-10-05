@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   init_here_doc.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/03 15:58:12 by wleite           ###   ########.fr       */
+/*   Created: 2021/10/03 15:39:56 by wleite            #+#    #+#             */
+/*   Updated: 2021/10/05 14:28:32 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	pipex(int argc, char **argv, char **envp)
+int	init_here_doc(int argc, char **argv, char **envp, t_pipex *pipex)
 {
-	t_pipex	pipex;
-
-	if (argc >= 6 && is_here_doc(argv[1]))
-	{
-		init_here_doc(argc, argv, envp, &pipex);
-		execute_commands(&pipex);
-		exit_pipex(&pipex);
-	}
-	else if (argc >= 5)
-	{
-		init_pipex(argc, argv, envp, &pipex);
-		execute_commands(&pipex);
-		exit_pipex(&pipex);
-	}
-	else
-	{
-		ft_putstr_fd("Error\nToo few arguments!\n", 2);
-		exit(1);
-	}
+	pipex->here_doc = 1;
+	pipex->limiter = argv[2];
+	pipex->argc = argc;
+	pipex->argv = argv;
+	pipex->envp = envp;
+	pipex->cmd_count = argc - 4;
+	pipex->offset = 3;
+	create_pipes(pipex);
+	open_files(pipex);
+	create_pipeline(pipex);
 	return (0);
 }

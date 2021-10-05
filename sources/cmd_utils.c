@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 03:41:05 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/05 16:14:01 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,10 @@ static char	**get_path(char **envp)
 {
 	int	i;
 
-	i = 0;
-	while (envp[i])
-	{
+	i = -1;
+	while (envp[++i])
 		if (strncmp("PATH=", envp[i], 5) == 0)
 			return (ft_split(envp[i], ':'));
-		i++;
-	}
 	return (NULL);
 }
 
@@ -49,8 +46,8 @@ static char	*cmd_parse(char *cmd, char **path)
 	char	*result;
 
 	result = NULL;
-	i = 0;
-	while (path[i])
+	i = -1;
+	while (path[++i])
 	{
 		tmp1 = ft_strjoin(path[i], "/");
 		tmp2 = ft_strjoin(tmp1, cmd);
@@ -63,7 +60,6 @@ static char	*cmd_parse(char *cmd, char **path)
 		}
 		ft_free_ptr((void *)&tmp1);
 		ft_free_ptr((void *)&tmp2);
-		i++;
 	}
 	return (ft_strdup(cmd));
 }

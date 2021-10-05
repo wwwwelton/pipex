@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 21:50:37 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/03 09:11:29 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/05 16:12:25 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	debug(t_pipex *pipex)
 	int	i;
 
 	printf("\ncmd_count: %d", pipex->cmd_count);
-	printf("\npip_count: %d", pipex->pip_count);
-	printf("\nlast_pip: %p\n", pipex->pip[pipex->pip_count]);
+	printf("\npipe_count: %d", pipex->pipe_count);
+	printf("\nlast_pipe: %p\n", pipex->pipe[pipex->pipe_count]);
 	printf("argc_size: %d\n", pipex->offset);
 	printf("argc_size: %d\n", pipex->argc);
 	i = 0;

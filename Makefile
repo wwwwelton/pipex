@@ -4,6 +4,8 @@ LIBFT			=	$(LIBFT_PATH)/libft.a
 SOURCES_FILES	=	debug.c main.c pipex.c init_pipex.c exit_pipex.c
 SOURCES_FILES	+=	cmd_utils.c pipex_utils.c cmd.c error.c
 
+SOURCES_FILES	+=	here_doc_utils.c init_here_doc.c free_fire.c pipe_utils.c
+SOURCES_FILES	+=	file_utils.c
 SOURCES_BONUS	=
 
 SOURCES_DIR		=	sources
@@ -63,5 +65,11 @@ runvv:
 
 norm:
 				norminette $(SOURCES_DIR)
+
+runh:
+				clear && $(MAKE) && cat "passwd" && echo > passwd2 && ./pipex "here_doc" "END" "tr a z" "tr z b" "tr b t" "passwd2" && cat passwd2
+
+runhv:
+				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --track-origins=yes ./pipex "here_doc" "END" "tr a z" "tr z q" "passwd2" && cat passwd2
 
 .PHONY:			all clean fclean re libft bonus

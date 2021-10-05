@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/03 15:58:12 by wleite           ###   ########.fr       */
+/*   Created: 2021/10/05 14:28:13 by wleite            #+#    #+#             */
+/*   Updated: 2021/10/05 14:30:57 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	pipex(int argc, char **argv, char **envp)
+int	open_files(t_pipex *pipex)
 {
-	t_pipex	pipex;
-
-	if (argc >= 6 && is_here_doc(argv[1]))
+	if (!pipex->here_doc)
 	{
-		init_here_doc(argc, argv, envp, &pipex);
-		execute_commands(&pipex);
-		exit_pipex(&pipex);
+		pipex->file_in = open(pipex->argv[1], O_RDONLY);
+		if (pipex->file_in < 0)
+			exit_perror(pipex->argv[1], 1);
 	}
-	else if (argc >= 5)
-	{
-		init_pipex(argc, argv, envp, &pipex);
-		execute_commands(&pipex);
-		exit_pipex(&pipex);
-	}
-	else
-	{
-		ft_putstr_fd("Error\nToo few arguments!\n", 2);
-		exit(1);
-	}
+	pipex->file_out = open(pipex->argv[pipex->argc - 1],
+			O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	if (pipex->file_out < 0)
+		exit_perror(pipex->argv[pipex->argc - 1], 1);
 	return (0);
 }

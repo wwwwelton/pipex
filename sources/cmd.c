@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/03 09:24:32 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/05 16:10:36 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	execute_commands(t_pipex *pipex)
 	{
 		cmd = cmd_split(pipex->argv[i + pipex->offset], pipex);
 		if (access(cmd[0], X_OK) == 0)
-			execute_command(pipex->pip[i], cmd, pipex);
+			execute_command(pipex->pipe[i], cmd, pipex);
 		else
 			command_not_found(cmd[0], cmd, pipex);
 		free_splited_mat(cmd);
