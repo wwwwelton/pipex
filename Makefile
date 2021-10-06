@@ -13,69 +13,56 @@ SOURCES_BONUS	+=	pipex_bonus.c pipex_utils_bonus.c
 SOURCES_DIR		=	sources
 BONUS_DIR		=	sources_bonus
 
+OBJ_DIR			=	objects
+
 HEADER			=	$(SOURCES_DIR)/pipex.h
 HEADER_BONUS	=	$(BONUS_DIR)/pipex_bonus.h
 
 SOURCES			=	$(addprefix $(SOURCES_DIR)/, $(SOURCES_FILES))
 BONUS_FILES		=	$(addprefix $(BONUS_DIR)/, $(SOURCES_BONUS))
 
-OBJECTS			= 	$(SOURCES:.c=.o)
-OBJECTS_BONUS	= 	$(BONUS_FILES:.c=.o)
+OBJECTS			=	$(SOURCES:$(SOURCES_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJECTS_BONUS	=	$(BONUS_FILES:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 NAME			=	pipex
 NAME_BONUS		=	pipex_bonus
 
 CC				=	clang
-RM				=	rm -f
+RM				=	rm -rf
 
 CFLAGS			=	-Wall -Wextra -Werror
 
-.c.o:
-				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+$(OBJ_DIR)/%.o:	$(SOURCES_DIR)/%.c $(HEADER)
+				$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o:	$(BONUS_DIR)/%.c $(HEADER_BONUS)
+				$(CC) $(CFLAGS) -c $< -o $@
 
 all:			$(NAME)
 
 bonus:			$(NAME_BONUS)
 
-$(NAME):		$(LIBFT) $(OBJECTS) $(HEADER)
+$(NAME):		$(LIBFT) $(OBJ_DIR) $(OBJECTS) $(HEADER)
 				$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
-$(NAME_BONUS):	$(LIBFT) $(OBJECTS_BONUS) $(HEADER_BONUS)
+$(NAME_BONUS):	$(LIBFT) $(OBJ_DIR) $(OBJECTS_BONUS) $(HEADER_BONUS)
 				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME)
 				touch $(NAME_BONUS)
 
 $(LIBFT):
 				$(MAKE) -C $(LIBFT_PATH)
 
+$(OBJ_DIR):
+				mkdir -p $(OBJ_DIR)
+
 clean:
 				$(MAKE) -C $(LIBFT_PATH) clean
-				$(RM) $(OBJECTS) $(OBJECTS_BONUS)
+				$(RM) $(OBJ_DIR)
 
 fclean:			clean
 				$(MAKE) -C $(LIBFT_PATH) fclean
 				$(RM) $(NAME) $(NAME_BONUS)
 
 re:				fclean all
-
-run:
-				clear && $(MAKE) && cat "passwd" && echo > passwd2 && ./pipex "passwd" "tr a z" "tr z b" "tr b c" "tr c 0" "tr 0 1" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
-
-runv:
-				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "passwd" "tr a z" "tr z b" "tr 'b' 'c'" "tr c ' '" "tr ' ' 2" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
-
-runvv:
-				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "passwd" "tr a z" "tr z 3" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
-
-norm:
-				norminette $(SOURCES_DIR) $(HEADER)
-
-normb:
-				norminette $(BONUS_DIR) $(HEADER_BONUS)
-
-runh:
-				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && ./pipex_bonus "here_doc" "END" "tr a z" "tr z b" "tr b y" "passwd2" && cat passwd2
-
-runhv:
-				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex_bonus "here_doc" "END" "tr a z" "tr z u" "passwd2" && cat passwd2
 
 .PHONY:			all clean fclean re libft bonus
