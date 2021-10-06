@@ -41,7 +41,8 @@ $(NAME):		$(LIBFT) $(OBJECTS) $(HEADER)
 				$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 $(NAME_BONUS):	$(LIBFT) $(OBJECTS_BONUS) $(HEADER_BONUS)
-				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME_BONUS)
+				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME)
+				touch $(NAME_BONUS)
 
 $(LIBFT):
 				$(MAKE) -C $(LIBFT_PATH)
