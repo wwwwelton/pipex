@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 07:11:39 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 22:23:50 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 00:45:53 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	init_pipex(int argc, char **argv, char **envp, t_pipex *pipex)
 {
-	pipex->here_doc = 0;
-	pipex->limiter = NULL;
 	pipex->argc = argc;
 	pipex->argv = argv;
 	pipex->envp = envp;

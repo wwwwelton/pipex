@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 18:37:42 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 00:38:04 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ int	pipex(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
-	if (argc >= 6 && is_here_doc(argv[1]))
+	if (argc > 5)
 	{
-		init_here_doc(argc, argv, envp, &pipex);
-		execute_commands(&pipex);
-		exit_pipex(&pipex);
+		ft_putstr_fd("Error\nToo many arguments!\n", 2);
+		exit(1);
 	}
-	else if (argc >= 5)
+	else if (argc == 5)
 	{
 		init_pipex(argc, argv, envp, &pipex);
 		execute_commands(&pipex);

@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:25:24 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 16:10:58 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 00:46:17 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ int	create_pipeline(t_pipex *pipex)
 {
 	int	i;
 
-	if (pipex->here_doc)
-		read_std_input(pipex->pipe[0], pipex->limiter);
-	else
-		pipex->pipe[0][0] = pipex->file_in;
+	pipex->pipe[0][0] = pipex->file_in;
 	i = -1;
 	while (++i < (pipex->pipe_count - 1))
 		pipex->pipe[i][1] = pipex->pipe[i + 1][1];

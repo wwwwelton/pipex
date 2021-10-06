@@ -2,8 +2,8 @@ LIBFT_PATH		=	./libraries/libft
 LIBFT			=	$(LIBFT_PATH)/libft.a
 
 SOURCES_FILES	=	cmd.c cmd_utils.c error.c exit_pipex.c file_utils.c
-SOURCES_FILES	+=	free_fire.c here_doc_utils.c init_here_doc.c init_pipex.c
-SOURCES_FILES	+=	main.c pipe_utils.c pipex.c pipex_utils.c
+SOURCES_FILES	+=	free_fire.c init_pipex.c main.c pipe_utils.c
+SOURCES_FILES	+=	pipex.c pipex_utils.c
 
 SOURCES_BONUS	=	cmd_bonus.c cmd_utils_bonus.c error_bonus.c
 SOURCES_BONUS	+=	exit_pipex_bonus.c file_utils_bonus.c free_fire_bonus.c
@@ -73,9 +73,9 @@ normb:
 				norminette $(BONUS_DIR)
 
 runh:
-				clear && $(MAKE) && cat "passwd" && echo > passwd2 && ./pipex "here_doc" "END" "tr a z" "tr z b" "tr b t" "passwd2" && cat passwd2
+				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && ./pipex "here_doc" "END" "tr a z" "tr z b" "tr b x" "passwd2" && cat passwd2
 
 runhv:
-				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "here_doc" "END" "tr a z" "tr z q" "passwd2" && cat passwd2
+				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "here_doc" "END" "tr a z" "tr z q" "passwd2" && cat passwd2
 
 .PHONY:			all clean fclean re libft bonus
