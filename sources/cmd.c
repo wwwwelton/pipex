@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/06 08:37:23 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 15:39:20 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	execute_command(int *fd_tmp, char **cmd, t_pipex *pipex, int index)
 	{
 		dup42(fd_tmp[0], STDIN_FILENO, cmd, pipex);
 		if (index == 1)
-			dup42(pipex->file_out, fd[1], cmd, pipex);
+			dup42(pipex->file_out, STDOUT_FILENO, cmd, pipex);
 		else
 			dup42(fd[1], STDOUT_FILENO, cmd, pipex);
 		close(fd[0]);
