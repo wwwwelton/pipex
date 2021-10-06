@@ -41,7 +41,7 @@ $(NAME):		$(LIBFT) $(OBJECTS) $(HEADER)
 				$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 $(NAME_BONUS):	$(LIBFT) $(OBJECTS_BONUS) $(HEADER_BONUS)
-				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME)
+				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME_BONUS)
 
 $(LIBFT):
 				$(MAKE) -C $(LIBFT_PATH)
@@ -72,9 +72,9 @@ normb:
 				norminette $(BONUS_DIR) $(HEADER_BONUS)
 
 runh:
-				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && ./pipex "here_doc" "END" "tr a z" "tr z b" "tr b x" "passwd2" && cat passwd2
+				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && ./pipex_bonus "here_doc" "END" "tr a z" "tr z b" "tr b y" "passwd2" && cat passwd2
 
 runhv:
-				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "here_doc" "END" "tr a z" "tr z q" "passwd2" && cat passwd2
+				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex_bonus "here_doc" "END" "tr a z" "tr z u" "passwd2" && cat passwd2
 
 .PHONY:			all clean fclean re libft bonus

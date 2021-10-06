@@ -6,11 +6,17 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 23:59:32 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 09:39:09 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
+
+void	dup42(int fd1, int fd2, char **cmd, t_pipex *pipex)
+{
+	if (dup2(fd1, fd2) == -1)
+		execute_perror(cmd, "execute_command", 1, pipex);
+}
 
 void	mat_replace_all(char **cmds, char *old_word, char *new_word)
 {

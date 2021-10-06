@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/06 02:35:19 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 08:37:23 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static void	execute_command(int *fd_tmp, char **cmd, t_pipex *pipex, int index)
 		execute_perror(cmd, "execute_command", 1, pipex);
 	else if (pid == 0)
 	{
-		dup2(fd_tmp[0], STDIN_FILENO);
+		dup42(fd_tmp[0], STDIN_FILENO, cmd, pipex);
 		if (index == 1)
-			dup2(pipex->file_out, fd[1]);
+			dup42(pipex->file_out, fd[1], cmd, pipex);
 		else
-			dup2(fd[1], STDOUT_FILENO);
+			dup42(fd[1], STDOUT_FILENO, cmd, pipex);
 		close(fd[0]);
 		if (execve(cmd[0], cmd, pipex->envp) == -1)
 			execute_perror(cmd, cmd[0], 126, pipex);
@@ -40,17 +40,16 @@ static void	execute_command(int *fd_tmp, char **cmd, t_pipex *pipex, int index)
 int	execute_commands(t_pipex *pipex)
 {
 	int		i;
-	int		fd_tmp[2];
+	int		fd_tmp;
 	char	**cmd;
 
-	fd_tmp[0] = pipex->file_in;
-	fd_tmp[1] = 1;
+	fd_tmp = pipex->file_in;
 	i = -1;
 	while (++i < pipex->cmd_count)
 	{
 		cmd = cmd_split(pipex->argv[i + pipex->offset], pipex);
 		if (access(cmd[0], X_OK) == 0)
-			execute_command(fd_tmp, cmd, pipex, i);
+			execute_command(&fd_tmp, cmd, pipex, i);
 		else
 			command_not_found(cmd[0], cmd, pipex);
 		free_splited_mat(cmd);
