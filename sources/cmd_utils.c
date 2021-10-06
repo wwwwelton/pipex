@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 16:14:01 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 00:04:22 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	**get_path(char **envp)
 
 	i = -1;
 	while (envp[++i])
-		if (strncmp("PATH=", envp[i], 5) == 0)
+		if (ft_strncmp("PATH=", envp[i], 5) == 0)
 			return (ft_split(envp[i], ':'));
 	return (NULL);
 }
