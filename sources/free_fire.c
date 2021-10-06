@@ -6,24 +6,11 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:23:10 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 16:10:59 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 02:22:45 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-int	free_pipes(t_pipex *pipex)
-{
-	int	i;
-
-	if (!pipex->pipe)
-		return (1);
-	i = -1;
-	while (pipex->pipe[++i])
-		ft_free_ptr((void *)&pipex->pipe[i]);
-	ft_free_ptr((void *)&pipex->pipe);
-	return (0);
-}
 
 void	free_splited_mat(char **mat)
 {

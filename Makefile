@@ -2,8 +2,7 @@ LIBFT_PATH		=	./libraries/libft
 LIBFT			=	$(LIBFT_PATH)/libft.a
 
 SOURCES_FILES	=	cmd.c cmd_utils.c error.c exit_pipex.c file_utils.c
-SOURCES_FILES	+=	free_fire.c init_pipex.c main.c pipe_utils.c
-SOURCES_FILES	+=	pipex.c pipex_utils.c
+SOURCES_FILES	+=	free_fire.c init_pipex.c main.c pipex.c pipex_utils.c
 
 SOURCES_BONUS	=	cmd_bonus.c cmd_utils_bonus.c error_bonus.c
 SOURCES_BONUS	+=	exit_pipex_bonus.c file_utils_bonus.c free_fire_bonus.c
@@ -67,10 +66,10 @@ runvv:
 				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "passwd" "tr a z" "tr z 3" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
 
 norm:
-				norminette $(SOURCES_DIR)
+				norminette $(SOURCES_DIR) $(HEADER)
 
 normb:
-				norminette $(BONUS_DIR)
+				norminette $(BONUS_DIR) $(HEADER_BONUS)
 
 runh:
 				clear && $(MAKE) bonus && cat "passwd" && echo > passwd2 && ./pipex "here_doc" "END" "tr a z" "tr z b" "tr b x" "passwd2" && cat passwd2

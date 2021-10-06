@@ -6,11 +6,18 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 14:28:13 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/06 00:47:16 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 02:20:19 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	close_files(t_pipex *pipex)
+{
+	close(pipex->file_in);
+	close(pipex->file_out);
+	return (0);
+}
 
 int	open_files(t_pipex *pipex)
 {
