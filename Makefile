@@ -47,10 +47,10 @@ $(NAME):		$(LIBFT) $(OBJ_DIR) $(OBJECTS) $(HEADER)
 
 $(NAME_BONUS):	$(LIBFT) $(OBJ_DIR) $(OBJECTS_BONUS) $(HEADER_BONUS)
 				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME)
-				touch $(NAME_BONUS)
+				cp $(NAME) $(NAME_BONUS)
 
 $(LIBFT):
-				$(MAKE) -C $(LIBFT_PATH)
+				$(MAKE) -C $(LIBFT_PATH) bonus
 
 $(OBJ_DIR):
 				mkdir -p $(OBJ_DIR)
