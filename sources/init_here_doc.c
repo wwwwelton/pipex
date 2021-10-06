@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 15:39:56 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 18:26:10 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/05 22:23:48 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	init_here_doc(int argc, char **argv, char **envp, t_pipex *pipex)
 	pipex->cmd_count = argc - 4;
 	pipex->offset = 3;
 	pipex->state_lock = 0;
-	create_pipes(pipex);
 	open_files(pipex);
+	create_pipes(pipex);
 	create_pipeline(pipex);
 	return (0);
 }
