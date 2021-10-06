@@ -58,10 +58,10 @@ run:
 				clear && $(MAKE) && cat "passwd" && echo > passwd2 && ./pipex "passwd" "tr a z" "tr z b" "tr b c" "tr c 0" "tr 0 1" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
 
 runv:
-				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --track-fds=yes --error-exitcode=1 --track-origins=yes ./pipex "passwd" "tr a z" "tr z b" "tr 'b' 'c'" "tr c ' '" "tr ' ' 2" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
+				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "passwd" "tr a z" "tr z b" "tr 'b' 'c'" "tr c ' '" "tr ' ' 2" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
 
 runvv:
-				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --track-fds=yes --error-exitcode=1 --track-origins=yes ./pipex "passwd" "tr a z" "tr z 3" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
+				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "passwd" "tr a z" "tr z 3" "passwd2" && echo "->" && cat "passwd2" && echo "<-"
 
 norm:
 				norminette $(SOURCES_DIR)
@@ -70,6 +70,6 @@ runh:
 				clear && $(MAKE) && cat "passwd" && echo > passwd2 && ./pipex "here_doc" "END" "tr a z" "tr z b" "tr b t" "passwd2" && cat passwd2
 
 runhv:
-				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --track-fds=yes --error-exitcode=1 --track-origins=yes ./pipex "here_doc" "END" "tr a z" "tr z q" "passwd2" && cat passwd2
+				clear && $(MAKE) && cat "passwd" && echo > passwd2 && valgrind -q --leak-check=full --show-leak-kinds=all -s --error-exitcode=1 --track-origins=yes ./pipex "here_doc" "END" "tr a z" "tr z q" "passwd2" && cat passwd2
 
 .PHONY:			all clean fclean re libft bonus
