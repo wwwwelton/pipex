@@ -5,7 +5,11 @@ SOURCES_FILES	=	cmd.c cmd_utils.c error.c exit_pipex.c file_utils.c
 SOURCES_FILES	+=	free_fire.c here_doc_utils.c init_here_doc.c init_pipex.c
 SOURCES_FILES	+=	main.c pipe_utils.c pipex.c pipex_utils.c
 
-SOURCES_BONUS	=
+SOURCES_BONUS	=	cmd_bonus.c cmd_utils_bonus.c error_bonus.c
+SOURCES_BONUS	+=	exit_pipex_bonus.c file_utils_bonus.c free_fire_bonus.c
+SOURCES_BONUS	+=	here_doc_utils_bonus.c init_here_doc_bonus.c
+SOURCES_BONUS	+=	init_pipex_bonus.c main_bonus.c pipe_utils_bonus.c
+SOURCES_BONUS	+=	pipex_bonus.c pipex_utils_bonus.c
 
 SOURCES_DIR		=	sources
 BONUS_DIR		=	sources_bonus
@@ -25,7 +29,7 @@ NAME_BONUS		=	pipex_bonus
 CC				=	clang
 RM				=	rm -f
 
-CFLAGS			=	-Wall -Wextra -Werror -g3
+CFLAGS			=	-Wall -Wextra -Werror
 
 .c.o:
 				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -38,7 +42,7 @@ $(NAME):		$(LIBFT) $(OBJECTS) $(HEADER)
 				$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 $(NAME_BONUS):	$(LIBFT) $(OBJECTS_BONUS) $(HEADER_BONUS)
-				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME_BONUS)
+				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 				$(MAKE) -C $(LIBFT_PATH)
@@ -64,6 +68,9 @@ runvv:
 
 norm:
 				norminette $(SOURCES_DIR)
+
+normb:
+				norminette $(BONUS_DIR)
 
 runh:
 				clear && $(MAKE) && cat "passwd" && echo > passwd2 && ./pipex "here_doc" "END" "tr a z" "tr z b" "tr b t" "passwd2" && cat passwd2
