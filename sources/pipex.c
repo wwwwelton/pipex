@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/06 00:38:04 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/06 09:58:31 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	pipex(int argc, char **argv, char **envp)
 	if (argc > 5)
 	{
 		ft_putstr_fd("Error\nToo many arguments!\n", 2);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	else if (argc == 5)
 	{
@@ -30,7 +30,7 @@ int	pipex(int argc, char **argv, char **envp)
 	else
 	{
 		ft_putstr_fd("Error\nToo few arguments!\n", 2);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	return (pipex.state_lock);
 }
