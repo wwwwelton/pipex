@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 21:55:47 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/05 23:45:55 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int		is_here_doc(char *str);
 int		open_files(t_pipex *pipex);
 int		pipex(int argc, char **argv, char **envp);
 void	command_not_found(char *cmd, char **cmd_splitted, t_pipex *pipex);
-void	debug(t_pipex *pipex);
 void	execute_perror(char **cmd, char *error, int code, t_pipex *pipex);
 void	exit_perror(char *error, int code);
 void	free_splited_mat(char **mat);

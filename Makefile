@@ -1,11 +1,10 @@
 LIBFT_PATH		=	./libraries/libft
 LIBFT			=	$(LIBFT_PATH)/libft.a
 
-SOURCES_FILES	=	debug.c main.c pipex.c init_pipex.c exit_pipex.c
-SOURCES_FILES	+=	cmd_utils.c pipex_utils.c cmd.c error.c
+SOURCES_FILES	=	cmd.c cmd_utils.c error.c exit_pipex.c file_utils.c
+SOURCES_FILES	+=	free_fire.c here_doc_utils.c init_here_doc.c init_pipex.c
+SOURCES_FILES	+=	main.c pipe_utils.c pipex.c pipex_utils.c
 
-SOURCES_FILES	+=	here_doc_utils.c init_here_doc.c free_fire.c pipe_utils.c
-SOURCES_FILES	+=	file_utils.c
 SOURCES_BONUS	=
 
 SOURCES_DIR		=	sources
