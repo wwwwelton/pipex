@@ -6,7 +6,10 @@ pipex
 passwd
 passwd2
 .vscode
-*.excalidraw
 pipex-tester
 pipex_bonus
 objects
+files
+images
+license
+README.md
