@@ -32,37 +32,37 @@ RM				=	rm -rf
 
 CFLAGS			=	-Wall -Wextra -Werror
 
-$(OBJ_DIR)/%.o:	$(SOURCES_DIR)/%.c $(HEADER)
-				$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o:		$(SOURCES_DIR)/%.c $(HEADER)
+					$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/%.o:	$(BONUS_DIR)/%.c $(HEADER_BONUS)
-				$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o:		$(BONUS_DIR)/%.c $(HEADER_BONUS)
+					$(CC) $(CFLAGS) -c $< -o $@
 
-all:			$(NAME)
+all:				$(NAME)
 
-bonus:			$(NAME_BONUS)
+bonus:				$(NAME_BONUS)
 
-$(NAME):		$(LIBFT) $(OBJ_DIR) $(OBJECTS) $(HEADER)
-				$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
+$(NAME):			$(LIBFT) $(OBJ_DIR) $(OBJECTS) $(HEADER)
+					$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
-$(NAME_BONUS):	$(LIBFT) $(OBJ_DIR) $(OBJECTS_BONUS) $(HEADER_BONUS)
-				$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME)
-				cp $(NAME) $(NAME_BONUS)
+$(NAME_BONUS):		$(LIBFT) $(OBJ_DIR) $(OBJECTS_BONUS) $(HEADER_BONUS)
+					$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFT) -o $(NAME)
+					cp $(NAME) $(NAME_BONUS)
 
 $(LIBFT):
-				$(MAKE) -C $(LIBFT_PATH) bonus
+					$(MAKE) -C $(LIBFT_PATH) bonus
 
 $(OBJ_DIR):
-				mkdir -p $(OBJ_DIR)
+					mkdir -p $(OBJ_DIR)
 
 clean:
-				$(MAKE) -C $(LIBFT_PATH) clean
-				$(RM) $(OBJ_DIR)
+					$(MAKE) -C $(LIBFT_PATH) clean
+					$(RM) $(OBJ_DIR)
 
-fclean:			clean
-				$(MAKE) -C $(LIBFT_PATH) fclean
-				$(RM) $(NAME) $(NAME_BONUS)
+fclean:				clean
+					$(MAKE) -C $(LIBFT_PATH) fclean
+					$(RM) $(NAME) $(NAME_BONUS)
 
-re:				fclean all
+re:					fclean all
 
-.PHONY:			all clean fclean re libft bonus
+.PHONY:				all clean fclean re libft bonus
