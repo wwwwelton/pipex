@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/05 23:59:22 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/22 18:32:25 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	command_not_found(char *cmd, char **cmd_splitted, t_pipex *pipex)
 	if (cmd_splitted)
 		free_splited_mat(cmd_splitted);
 	exit_pipex(pipex);
-	ft_putstr_fd("command not found", 2);
-	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(pipex->error_str, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd("command not found", 2);
 	ft_putstr_fd("\n", 2);
 	exit(127);
 }
