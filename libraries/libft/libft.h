@@ -6,17 +6,31 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/09/29 22:03:01 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/01 14:44:54 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <limits.h>
-# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# ifndef INT_MIN
+#  define INT_MIN -2147483648
+# endif
+
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
+
+# ifndef FALSE
+#  define FALSE 0
+# endif
+
+# ifndef TRUE
+#  define TRUE 1
+# endif
 
 # ifndef OPEN_MAX
 #  define OPEN_MAX 256
@@ -539,14 +553,15 @@ char	*ft_str_replace(char *str,	const char *old_word, const char *new_word);
 int		ft_str_toupper(char *str);
 
 /**
- * @brief Converts an unsigned char to a string allocated with malloc.
+ * @brief Creates a string of size len filled with the unsigned char
+ * passed as parameter.
  *
- * @param c This is the unsigned char to be converted.
- * @return Returns a string, allocated with malloc with the character
- * passed to the parameter in the first position and '\\0' in the
- * second position.
+ * @param c This is the unsigned char that will fill the string.
+ * @param len This is the number of bytes the string will be created.
+ * @return Returns a string, allocated with malloc filled
+ * with the unsigned char passed as parameter null terminated with '\\0'.
  */
-char	*ft_char_tostr(unsigned char c);
+char	*ft_char_to_str(char c, size_t len);
 
 /**
  * @brief Allocates with malloc and returns a string representing the
@@ -569,5 +584,26 @@ char	*ft_uitoa_base(size_t n, const char *base);
  * or error occurred.
  */
 char	*ft_get_next_line(int fd);
+
+/**
+ * @brief Allocates with malloc and returns a new string, which is the
+ * result of the concatenation of 's1' and 's2'. The memory address
+ * of 's1' and 's2' will be freed.
+ *
+ * @param s1 The prefix string.
+ * @param s2 The suffix string.
+ * @return The new string. NULL if the allocation fails.
+ */
+char	*ft_strmerge(char *s1, char *s2);
+
+/**
+ * @brief Converts the string argument nptr to a long integer (type long int).
+ *
+ * @param nptr This is the string representation of an integral number.
+ * @return This function returns the converted integral number
+ * as a long int value.
+ * If no valid conversion could be performed, it returns zero.
+ */
+long	ft_atol(const char *nptr);
 
 #endif

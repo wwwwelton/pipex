@@ -9,7 +9,8 @@ SOURCES			+=	ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c
 SOURCES			+=	ft_tolower.c ft_toupper.c
 
 SOURCES			+=	ft_free_ptr.c ft_str_replace.c ft_str_toupper.c
-SOURCES			+=	ft_char_tostr.c ft_uitoa_base.c ft_get_next_line.c
+SOURCES			+=	ft_char_to_str.c ft_uitoa_base.c ft_get_next_line.c
+SOURCES			+=	ft_strmerge.c ft_atol.c
 
 SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 SOURCES_BONUS	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
@@ -32,29 +33,29 @@ RM				=	rm -rf
 CFLAGS			=	-Wall -Wextra -Werror
 ARFLAGS 		=	rcs
 
-$(OBJ_DIR)/%.o:	%.c $(HEADER)
-				$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o:		%.c $(HEADER)
+					$(CC) $(CFLAGS) -c $< -o $@
 
-all:			$(NAME)
+all:				$(NAME)
 
-bonus:			$(NAME_BONUS)
+bonus:				$(NAME_BONUS)
 
-$(NAME):		$(OBJ_DIR) $(OBJECTS) $(HEADER)
-				$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
+$(NAME):			$(OBJ_DIR) $(OBJECTS) $(HEADER)
+					$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
 
-$(NAME_BONUS):	$(NAME) $(OBJ_DIR) $(OBJECTS_BONUS) $(HEADER)
-				$(AR) $(ARFLAGS) $(NAME) $(OBJECTS_BONUS)
-				cp $(NAME) $(NAME_BONUS)
+$(NAME_BONUS):		$(NAME) $(OBJ_DIR) $(OBJECTS_BONUS) $(HEADER)
+					$(AR) $(ARFLAGS) $(NAME) $(OBJECTS_BONUS)
+					cp $(NAME) $(NAME_BONUS)
 
 $(OBJ_DIR):
-				mkdir -p $(OBJ_DIR)
+					mkdir -p $(OBJ_DIR)
 
 clean:
-				$(RM) $(OBJ_DIR)
+					$(RM) $(OBJ_DIR)
 
-fclean:			clean
-				$(RM) $(NAME) $(NAME_BONUS)
+fclean:				clean
+					$(RM) $(NAME) $(NAME_BONUS)
 
-re:				fclean all
+re:					fclean all
 
-.PHONY:			all clean fclean re bonus
+.PHONY:				all clean fclean re bonus
