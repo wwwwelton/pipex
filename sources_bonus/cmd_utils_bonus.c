@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/06 00:07:22 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/30 20:49:40 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ static int	cmd_is_empty(char *str)
 		return (0);
 	i = -1;
 	while (str[++i])
-	{
 		if (str[i] != ' ')
 			return (0);
-	}
 	return (1);
 }
 
@@ -41,25 +39,22 @@ static char	**get_path(char **envp)
 static char	*cmd_parse(char *cmd, char **path)
 {
 	int		i;
-	char	*tmp1;
-	char	*tmp2;
+	char	*tmp;
 	char	*result;
 
 	result = NULL;
 	i = -1;
 	while (path[++i])
 	{
-		tmp1 = ft_strjoin(path[i], "/");
-		tmp2 = ft_strjoin(tmp1, cmd);
-		if (access(tmp2, F_OK) == 0)
+		tmp = ft_strjoin(path[i], "/");
+		tmp = ft_strmerge(tmp, ft_strdup(cmd));
+		if (access(tmp, F_OK) == 0)
 		{
-			result = ft_strdup(tmp2);
-			ft_free_ptr((void *)&tmp1);
-			ft_free_ptr((void *)&tmp2);
+			result = ft_strdup(tmp);
+			ft_free_ptr((void *)&tmp);
 			return (result);
 		}
-		ft_free_ptr((void *)&tmp1);
-		ft_free_ptr((void *)&tmp2);
+		ft_free_ptr((void *)&tmp);
 	}
 	return (ft_strdup(cmd));
 }

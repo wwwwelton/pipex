@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 01:18:03 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/06 09:40:32 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/30 20:36:21 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	execute_command(int *fd, char **cmd, t_pipex *pipex)
 		dup42(fd[0], STDIN_FILENO, cmd, pipex);
 		dup42(fd[1], STDOUT_FILENO, cmd, pipex);
 		if (execve(cmd[0], cmd, pipex->envp) == -1)
-			execute_perror(cmd, cmd[0], 126, pipex);
+			execute_perror(cmd, cmd[0], 1, pipex);
 	}
 	waitpid(-1, &pipex->state_lock, WNOHANG);
 	close(fd[0]);
