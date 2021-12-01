@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 15:44:38 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/22 17:25:59 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/01 19:40:54 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	pipex(int argc, char **argv, char **envp)
 	else
 	{
 		ft_putstr_fd("Error\nToo few arguments!\n", 2);
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	return (pipex.state_lock);
 }
