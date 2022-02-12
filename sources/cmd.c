@@ -36,7 +36,7 @@ static void	execute_command(int *fd_tmp, char **cmd, t_pipex *pipex, int index)
 	fd_tmp[0] = fd[0];
 	close(fd[1]);
 }
-
+// krebinho gameplays
 int	execute_commands(t_pipex *pipex)
 {
 	int		i;
